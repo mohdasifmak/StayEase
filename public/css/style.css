@@ -1,0 +1,114 @@
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+} 
+
+.container{
+    flex: 1;
+}
+
+.navbar{
+    height: 5rem;
+    background-color: white;
+}
+
+.fa-compass{
+    color: #fe424d;
+    font-size: 2rem;
+}
+.fa-compass:hover{
+    font-size: 2.2rem;  
+}
+
+.nav-link{
+    color: #222222 !important;
+    transition: all 0.3s ease-in-out;
+}
+.nav-link:hover{
+    transform: scale(1.1); /* Slightly increase the size */
+}
+
+
+/* Footer */
+.f-info-links a{
+    text-decoration: none;
+    color: #222222;
+}
+.f-info-links a:hover{
+   text-decoration: underline; 
+}
+.f-info{
+    text-align: center;
+    display: flex;
+    height: 5rem;
+    /* background-color: #ebebeb; */
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+.f-info-socials, 
+.f-info-links,
+.f-info-brand{
+    width: 100%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-info-socials i{
+    margin-right: 1.5rem;  
+    font-size: 1.3rem;
+}
+.footer{
+     background-color: #ebebeb;;
+     padding-bottom: 8px;
+}
+
+/* cards */
+.card-listing{
+    margin-bottom: 2rem;
+    border: none !important;
+}
+.card-img-top{
+    border-radius: 1rem !important;
+    height: 20rem ;
+    width: 100%;
+    object-fit: cover !important;
+}
+
+/* card effect */
+.card-img-overlay{
+    opacity: 0;
+}
+
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+}
+.cardLink{
+    text-decoration: none;
+}
+.card p{
+    color: black;
+}
+
+.addBtn{
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+.showImg{
+    /* width: 80vh !important; */
+    height: 30rem;
+}
+.btns{
+    display: flex;
+}
+.alert-success{
+    margin-top: 0.5rem;
+}
+.btn-close{
+    padding-top: 0.5rem !important;
+}

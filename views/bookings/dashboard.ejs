@@ -1,0 +1,57 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-5">
+    <% if (listings.length > 0) { %>
+        <h2 class="text-center mb-4">Your Listings</h2>
+        <div class="row">
+            <% listings.forEach(listing => { %>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <% if (listing.image && listing.image.url) { %>
+                            <img src="<%= listing.image.url %>" class="card-img-top" alt="Listing Image">
+                        <% } %>
+                        <div class="card-body">
+                            <h5 class="card-title"><%= listing.title %></h5>
+                            <p class="card-text">
+                                <b>Location:</b> <%= listing.location %>, <%= listing.country %><br>
+                                <b>Price:</b> ₹ <%= listing.price.toLocaleString("en-In") %> / night
+                            </p>
+                            <h6>Bookings:</h6>
+                            <% if (listing.bookings.length > 0) { %>
+                                <ul class="list-group list-group-flush">
+                                    <% listing.bookings.forEach(booking => { %>
+                                        <li class="list-group-item">
+                                            <b>Check-in:</b> <%= booking.checkin.toDateString() %> - <b>Check-out:</b> <%= booking.checkout.toDateString() %><br>
+                                            <b>Guests:</b> <%= booking.guests %><br>
+                                            <b>Status:</b> 
+                                            <span class="<%= booking.cancelled ? 'text-danger' : 'text-success' %>">
+                                                <%= booking.cancelled ? 'Cancelled' : 'Active' %>
+                                            </span>
+                                        </li>
+                                    <% }) %>
+                                </ul>
+                            <% } else { %>
+                                <p>No bookings yet.</p>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    <% } else { %>
+        <p class="text-center">You have no listings.</p>
+    <% } %>
+</div>
+
+<style>
+    .card-title {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+    .card-text {
+        margin-bottom: 1rem;
+    }
+    .list-group-item {
+        padding: 0.75rem 1.25rem;
+    }
+</style>

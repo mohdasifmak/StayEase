@@ -1,0 +1,21 @@
+<% layout("/layouts/boilerplate") %>
+
+<h3>Search Results</h3>
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3" id="listingsContainer">
+    <% for(let listing of searchResults) { %>
+        <a class="cardLink" href="/listings/<%= listing._id %>">
+            <div class="card col card-listing">
+                <img src="<%= listing.image.url %>" class="card-img-top" alt="Listing Image">
+                <div class="card-img-overlay"></div>
+                <div class="card-body">
+                    <p class="card-text"><b><%= listing.location %>, <%= listing.country %></b> <br />
+                    Hosted By <%= listing.owner.name %>
+                    <br>
+                    &#8377; <b><%= listing.price.toLocaleString("en-In") %></b> / night 
+                    </p>
+                </div>
+            </div>
+        </a>
+    <% } %>
+</div>
