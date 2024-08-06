@@ -1,19 +1,177 @@
 
 <style>
-  .btn-search{
+  /* Custom Button Styles */
+.btn-search {
+  background-color: #fe424d;
+  color: #fff;
+  border: none;
+  margin: auto;
+}
+
+.btn-search:hover {
+  background-color: #fe424d;
+  color: #fff;
+}
+
+.btn-search i {
+  margin-right: 0.5rem;
+}
+
+.booking {
+  background-color: #fe424d;
+  border: none;
+  color: white;
+}
+
+.booking:hover {
+  background-color: #fe424d;
+  color: #fff;
+}
+
+/* Overlay */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 998;
+}
+
+/* Show overlay when active */
+#overlay.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Navbar when open */
+.navbar-collapse.show {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #f8f9fa; /* Matching background color */
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}
+
+/* Ensure the navbar button is above other elements */
+.navbar-toggler {
+  z-index: 1000;
+}
+
+/* Dimmed effect for the main content */
+body.dimmed {
+  filter: brightness(100%);
+}
+
+/* Styles for small screens */
+@media (max-width: 767px) {
+  /* Adjust navbar when toggled open on small screens */
+  .navbar-collapse {
+    position: fixed; /* Fix position for small screens */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f8f9fa; /* Background color matching the navbar */
+    z-index: 999; /* Ensure it is on top of the overlay */
+    text-align: center; /* Center text */
+    transform: translateY(-100%); /* Start off-screen */
+    transition: transform 0.3s ease; /* Smooth slide-in */
+  }
+
+  .navbar-collapse.show {
+    transform: translateY(0); /* Slide into view */
+  }
+
+  /* Center navbar items on small screens */
+  .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .navbar-nav .nav-link,
+  .navbar-nav .btn {
+    margin: 10px 0; /* Adjust spacing between items */
+  }
+
+  /* Center search bar on small screens */
+  form.d-flex {
+    display: flex;
+    width: 100%; /* Ensure form takes full width */
+    justify-content: center; /* Center contents horizontally */
+  }
+
+  .form-control {
+    width: 100%; /* Ensure the input takes full width */
+  }
+
+  .btn-search {
     background-color: #fe424d;
     color: #fff;
   }
 
-  .btn-search:hover{
+  .btn-search:hover {
     background-color: #fe424d;
     color: #fff;
   }
+}
 
-  .btn-search i{
-    display: inline;
-    margin-right: 0.5rem;
+
+/* General Search Bar Container Styles */
+.search-bar-container {
+  position: relative; /* Position relative for left adjustment */
+  width: 100%; /* Full width of the parent container */
+}
+
+/* Default styles for search box */
+.form-control {
+  width: calc(100% - 2.5rem); /* Full width minus button width */
+  transition: width 0.3s ease; /* Smooth transition for width changes */
+}
+
+
+
+/* Styles for screens smaller than 450px */
+@media (max-width: 450px) {
+  .form-control {
+    width: calc(100% - 1.5rem); /* Reduce width while maintaining left alignment */
+    font-size: 0.75rem; /* Optional: Adjust font size */
   }
+
+  .btn-search {
+    font-size: 0.75rem; /* Optional: Adjust button size */
+  }
+}
+
+/* Styles for screens smaller than 350px */
+@media (max-width: 360px) {
+  .search-bar-container {
+    display: flex;
+    align-items: center; /* Center vertically */
+  }
+
+  .form-control {
+    width: 50%; /* Reduce width to 50% of the container */
+    font-size: 0.675rem; /* Optional: Adjust font size */
+  }
+
+  .btn-search {
+    margin-left: 0; /* Remove negative margin for better alignment */
+    font-size: 0.675rem; /* Optional: Adjust button size */
+  }
+}
 
 
 </style>
@@ -21,75 +179,72 @@
 
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
-
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link" href="/listings">Explore</a>       
-        </div>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+    <button class="navbar-toggler" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
 
-       <!-- <div class="ms-auto">
-        <form class="d-flex" action="/listings/search" method="get" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search Destinations" aria-label="Search">
-          <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
-        </form>
-       </div>  -->
-       <div class="ms-auto">
-        <form class="d-flex" action="/listings/search" method="get" role="search">
-          <input class="form-control me-2" type="search" name="query" placeholder="Location, Country" aria-label="Search">
-          <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
-        </form>
-      </div> 
-    
+    <!-- Search Bar -->
+    <div class="ms-auto">
+      <form class="d-flex" action="/listings/search" method="get" role="search">
+        <input class="form-control me-2" type="search" name="query" placeholder="Location, Country" aria-label="Search">
+        <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+    </div> 
 
 
-        <div class="navbar-nav ms-auto">
-
-          <% if (currUser) { %>
-            <a href="/bookings" class="booking btn ms-2 me-2">My Bookings</a>
-            <% } %>
-
-          <% if (currUser) { %>
-            <a href="/bookings/dashboard" class="btn booking ms-2 me-2">Listing Status</a>
-           <% } %>
-
-
-          <a class="nav-link" href="listings/new">Add New Listing</a>
-          <!-- if condition check wheather user is sign up , log in or not if log in then only show the log out button otherwise show sing and log in button -->
-          <% if(!currUser){ %> 
+      <div class="navbar-nav ms-auto">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="/listings">Explore</a>       
+          </div>
+          
+        <% if (currUser) { %>
+          <a href="/bookings" class="booking btn ms-2 me-2">Bookings</a>
+        <% } %>
+        <% if (currUser) { %>
+          <a href="/bookings/dashboard" class="btn booking ms-2 me-2">Listings</a>
+        <% } %>
+        <a class="nav-link" href="listings/new">Add New Listing</a>
+        <% if(!currUser){ %> 
           <a class="nav-link" href="/signup"><b>Sign Up</b></a>
           <a class="nav-link" href="/login"><b>Log in</b></a>
-          <% } %>
-
-          <% if(currUser){ %>
+        <% } %>
+        <% if(currUser){ %>
           <a class="nav-link" href="/logout"><b>Log out</b></a>
-          <% } %>
-          
-        </div>
+        <% } %>
       </div>
     </div>
-  </nav>
 
-  <style>
-    .booking{
-      background-color:  #fe424d;
-      border: none;
-      color: white;
-    }
+  </div>
+</nav>
 
-    .booking:hover{
-    background-color: #fe424d;
-    color: #fff;
-  }
-
-  .notification{
-    size: 100vh;
-  }
+<!-- Overlay -->
+<div id="overlay"></div>
 
 
-  </style>
+
+ <script>
+  document.querySelector('.navbar-toggler').addEventListener('click', function() {
+  const overlay = document.getElementById('overlay');
+  const navbarCollapse = document.querySelector('.navbar-collapse');
+
+  // Toggle active class on overlay and show class on navbar-collapse
+  overlay.classList.toggle('active');
+  document.body.classList.toggle('dimmed');
+  navbarCollapse.classList.toggle('show');
+});
+
+// Close the navbar and overlay when clicking outside the navbar
+document.getElementById('overlay').addEventListener('click', function() {
+  this.classList.remove('active');
+  document.body.classList.remove('dimmed');
+  document.querySelector('.navbar-collapse').classList.remove('show');
+});
+
+
+</script> 
+
+
