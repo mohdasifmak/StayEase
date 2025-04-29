@@ -64,13 +64,20 @@ npm install
 Set up environment variables: Create a .env file in the root directory and add the following:
 
 PORT=3000
+
 MONGODB_URI=your_mongodb_connection_string
+
 CLOUDINARY_CLOUD_NAME=your_cloud_name
+
 CLOUDINARY_API_KEY=your_api_key
+
 CLOUDINARY_API_SECRET=your_api_secret
+
 SESSION_SECRET=your_session_secret
+
 Run the application:
 
 
 node app.js
+
 Application is start.
