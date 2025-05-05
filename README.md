@@ -1,67 +1,45 @@
-StayEase
+# StayEase
 
 StayEase is a web application designed to streamline the process of finding and booking accommodations. It offers users an intuitive platform to browse listings, make reservations, and manage their stays with ease.
 
 
-Features
+## Features
 
-User Authentication: Secure sign-up and login functionalities.
+**User Authentication:** Secure sign-up and login functionalities.
 
-Property Listings: Browse through a variety of accommodation options.
+**Property Listings:** Browse through a variety of accommodation options.
 
-Booking System: Reserve properties with real-time availability checks.
+**Booking System:** Reserve properties with real-time availability checks.
 
-Image Uploads: Property owners can upload images to showcase their listings.
+**Image Uploads:** Property owners can upload images to showcase their listings.
 
-Responsive Design: Optimized for both desktop and mobile devices.
+**Responsive Design:** Optimized for both desktop and mobile devices.
 
+**Review system on Properties:** users can share their experience in review.
 
-Technologies Used
-
-Frontend:
-
-HTML, CSS, JavaScript
-
-EJS Templating Engine
+**Map for every Listing:** users can check properties location on map also in listing detail section.
 
 
-Backend:
+## Technologies Used
 
-Node.js
+**Frontend:** HTML, CSS, JavaScript EJS, Bootstrap.
 
-Express.js
+**Backend:** Node.js with Express.js
 
+**Database:** MongoDB
 
-Database:
+**File Uploads:** Multer, Cloudinary
 
-MongoDB
-
-
-File Uploads:
-
-Multer
-
-Cloudinary
+**Authentication:** Passport.js
 
 
-Authentication:
-
-Passport.js
-
-
-Others:
-
-Mongoose for MongoDB object modeling
-
-Installation
+## Installation
 Clone the repository:
-cd StayEase
 
-Install dependencies:
+## Install dependencies:
 npm install
 
-
-Set up environment variables: Create a .env file in the root directory and add the following:
+## Set up environment variables: Create a .env file in the root directory and add the following:
 
 PORT=3000
 
@@ -75,8 +53,7 @@ CLOUDINARY_API_SECRET=your_api_secret
 
 SESSION_SECRET=your_session_secret
 
-Run the application:
-
+## Run the application:
 
 node app.js
 
